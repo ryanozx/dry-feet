@@ -22,6 +22,7 @@ const Transition = React.forwardRef(function Transition(
 
 export default function MapResults({open, setOpen, data, setData}) {
 
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -71,7 +72,7 @@ export default function MapResults({open, setOpen, data, setData}) {
                 overflow: 'auto',
               }}
             >
-              <MapInstructions />
+              <MapInstructions instructions={data.path}/>
             </Grid>
           </Grid>
         </DialogContent>

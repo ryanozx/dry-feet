@@ -3,18 +3,18 @@ import './App.css';
 import { Box, Grid2 as Grid, Typography, Button, Card } from '@mui/material';
 import MyAutocomplete from './MyAutocomplete';
 import MyCheckbox from './MyCheckbox';
-import { getLocations, queryPath } from './api';
+import { getLocations, queryPath } from './api/api';
 import backgroundImage from './images/backgroundImage.jpg';
 import MapResults from './MapResults/MapResults';
 
 function App() {
   const [isSheltered, setIsSheltered] = useState(false);
   const [isAccessible, setIsAccessible] = useState(false);
-  const [showMap, setShowMap] = useState(true);
+  const [showMap, setShowMap] = useState(false);
   const [locations, setLocations] = useState([]);
   const [startLocation, setStartLocation] = useState("");
   const [endLocation, setEndLocation] = useState("");
-  const [data, setData] = useState({});
+  const [data, setData] = useState({path: []});
 
   useEffect(() => {
     (async () => {
