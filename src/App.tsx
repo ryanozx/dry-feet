@@ -6,6 +6,7 @@ import MyAutocomplete from './MyAutocomplete';
 import MyCheckbox from './MyCheckbox';
 import { getLocations, queryPath } from './api';
 import backgroundImage from './images/backgroundImage.jpg';
+import icon from './images/icon.jpg';
 
 function App() {
   const [isSheltered, setIsSheltered] = useState(false);
@@ -47,8 +48,11 @@ function App() {
       <Grid>
         <Card>
           <Grid container size={12} maxWidth="1000px" sx={{justifyContent:'center'}} padding={2}>
-            <Grid>
-              <Typography variant="h1">Dry Feet</Typography>
+            <Grid container spacing={2}>
+              <Typography variant="h1">Dri-Feet</Typography>
+              <Box>
+                <img src={icon} width="100rem" height="100rem" style={{borderRadius: '1.5rem'}}/>
+              </Box>
             </Grid>
             <Grid size={12}>
               <Box component="form" onSubmit={onFormSubmit}>
