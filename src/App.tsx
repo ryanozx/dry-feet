@@ -1,11 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
 import { useState } from 'react';
 import './App.css';
 import { Grid2 as Grid } from '@mui/material';
 import Header from './Header';
 import Home from './Home';
-import MapBox from './MapBox/MapBox';
+import MapResults from './MapResults/MapResults';
 
 function App() {
   const [isHome, setIsHome] = useState(false);
@@ -15,7 +13,7 @@ function App() {
       {
         isHome ?
         <Home /> :
-        <MapBox />
+        <MapResults />
       }
     </Grid>
 
