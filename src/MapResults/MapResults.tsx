@@ -60,7 +60,7 @@ export default function MapResults({open, setOpen, data, setData}) {
                 backgroundColor: 'lightblue',
               }}
             >
-              <MapContainer />
+              <MapContainer points={data?.points}/>
             </Grid>
 
             {/* Right Container */}
