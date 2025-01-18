@@ -1,20 +1,87 @@
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import logo from './logo.svg';
 import './App.css';
-import { Grid2 as Grid } from '@mui/material';
-import Header from './Header';
-import Home from './Home';
-import MapResults from './MapResults/MapResults';
+import { Box, Grid2 as Grid, Typography, Button } from '@mui/material';
+import MyAutocomplete from './MyAutocomplete';
+import MyCheckbox from './MyCheckbox';
+import { getLocations, queryPath } from './api';
 
 function App() {
-  const [isHome, setIsHome] = useState(false);
+  const [isSheltered, setIsSheltered] = useState(false);
+  const [isAccessible, setIsAccessible] = useState(false);
+  const [showMap, setShowMap] = useState(false);
+  const [locations, setLocations] = useState([]);
+  const [startLocation, setStartLocation] = useState("");
+  const [endLocation, setEndLocation] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const data = await getLocations();
+      setLocations(data);
+    })();
+  })
+
+  const onFormSubmit= async (e) => {
+    e.preventDefault();
+    const data = await queryPath(startLocation, endLocation, isSheltered, isAccessible);
+  }
+
+  const submitReady = !!startLocation && !!endLocation;
+
   return (
-    <Grid container>
-      <Header onClick = {() => setIsHome(true)} />
-      {
-        isHome ?
-        <Home /> :
-        <MapResults />
-      }
+    <Grid 
+      container 
+      sx={{
+        width: '100vw',
+        justifyContent: 'center'
+      }}
+      spacing={2}
+      padding={2}
+    >
+      <Grid container size={12} maxWidth="1000px" sx={{justifyContent:'center'}}>
+        <Grid>
+          <Typography variant="h1">Dry Feet</Typography>
+        </Grid>
+        <Grid size={12}>
+          <Box component="form" onSubmit={onFormSubmit}>
+            <Grid size={12} container columnSpacing={2}>
+              <Grid size={6}>
+                <MyAutocomplete 
+                  label="Start location"
+                  options={locations}
+                  onChange={(_,v) => setStartLocation(v)}
+                />
+              </Grid>
+              <Grid size={6}>
+                <MyAutocomplete 
+                  label="End location"
+                  options={locations}
+                  onChange={(_,v) => setEndLocation(v)}
+                />
+              </Grid>
+              <Grid size={6}>
+                <MyCheckbox
+                  label="accessible?"
+                  isChecked={isAccessible}
+                  onChange={() => setIsAccessible(!isAccessible)}
+                />
+              </Grid>
+              <Grid size={6}>
+                <MyCheckbox
+                  label="sheltered?"
+                  isChecked={isSheltered}
+                  onChange={() => setIsSheltered(!isSheltered)}
+                />
+              </Grid>
+              <Grid size={12} container sx={{justifyContent: 'center'}}>
+                <Button type="submit" variant="contained" color="primary" disabled={!submitReady}>
+                  Submit
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
+        </Grid>
+      </Grid>
     </Grid>
 
   );
