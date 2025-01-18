@@ -5,11 +5,8 @@ import MyAutocomplete from './MyAutocomplete';
 import MyCheckbox from './MyCheckbox';
 import { getLocations, queryPath } from './api/api';
 import backgroundImage from './images/backgroundImage.jpg';
-<<<<<<< HEAD
 import icon from './images/icon.jpg';
-=======
 import MapResults from './MapResults/MapResults';
->>>>>>> main
 
 function App() {
   const [isSheltered, setIsSheltered] = useState(false);
