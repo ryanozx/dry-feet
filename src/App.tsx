@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { Box, Grid2 as Grid, Typography, Button, Card } from '@mui/material';
+import { Box, Grid2 as Grid, Typography, Button, Card, TextField } from '@mui/material';
 import MyAutocomplete from './MyAutocomplete';
 import MyCheckbox from './MyCheckbox';
 import { getLocations, queryPath } from './api/api';
 import backgroundImage from './images/backgroundImage.jpg';
+import icon from './images/icon.jpg';
 import MapResults from './MapResults/MapResults';
 
 function App() {
@@ -30,7 +31,8 @@ function App() {
     setShowMap(true);
   }
 
-  const submitReady = !!startLocation && !!endLocation;
+  const submitReady = !!startLocation && !!endLocation && startLocation !== endLocation;
+  const sameLocation = !!startLocation && !!endLocation && startLocation === endLocation;
 
   return (
     <Grid 
@@ -50,8 +52,11 @@ function App() {
       <Grid>
         <Card>
           <Grid container size={12} maxWidth="1000px" sx={{justifyContent:'center'}} padding={2}>
-            <Grid>
-              <Typography variant="h1">Dry Feet</Typography>
+            <Grid container spacing={2}>
+              <Typography variant="h1">Dri-Feet</Typography>
+              <Box>
+                <img src={icon} width="100rem" height="100rem" style={{borderRadius: '1.5rem'}}/>
+              </Box>
             </Grid>
             <Grid size={12}>
               <Box component="form" onSubmit={onFormSubmit}>
@@ -85,9 +90,17 @@ function App() {
                     />
                   </Grid>
                   <Grid size={12} container sx={{justifyContent: 'center'}}>
-                    <Button type="submit" variant="contained" color="primary" disabled={!submitReady}>
-                      Submit
-                    </Button>
+                    <Grid size={12} container sx={{justifyContent: 'center'}}>
+                      <Button type="submit" variant="contained" color="primary" disabled={!submitReady}>
+                        Submit
+                      </Button>
+                    </Grid>
+                    { 
+                      sameLocation &&
+                      <Grid size={12} container sx={{justifyContent: 'center'}}>
+                        <Typography color="error">The same start and end location is selected</Typography>
+                      </Grid>
+                    }
                   </Grid>
                 </Grid>
               </Box>

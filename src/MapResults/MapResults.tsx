@@ -33,6 +33,7 @@ export default function MapResults({open, setOpen, data, setData}) {
         fullScreen
         open={open}
         TransitionComponent={Transition}
+        onClose={handleClose}
       >
         <AppBar sx={{ position: 'sticky' }}>
           <Toolbar>
