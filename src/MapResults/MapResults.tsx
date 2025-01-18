@@ -7,6 +7,7 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import DialogContent from '@mui/material/DialogContent';
 import Grid from '@mui/material/Grid';
+import NoRouteError from './NoRoutePage';
 
 import MapContainer from './MapContainer';
 import MapInstructions from './MapInstructions';
@@ -72,7 +73,10 @@ export default function MapResults({open, setOpen, data, setData}) {
                 overflow: 'auto',
               }}
             >
-              <MapInstructions instructions={data.path}/>
+              {data.pathAvailable ?
+              <MapInstructions instructions={data.path}/> 
+            : <NoRouteError />}
+              
             </Grid>
           </Grid>
         </DialogContent>
