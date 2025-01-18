@@ -1,19 +1,13 @@
 import { Autocomplete } from "@mui/material";
 import { TextField } from "@mui/material";
 
-const options = [
-    {label:'A'},
-    {label:'B'},
-    {label:'C'}
-]
-
-const MyAutocomplete = () => {
+const MyAutocomplete = ({label, options, onChange}) => {
     return (
         <Autocomplete
             disablePortal
             options={options}
-            renderInput={(params) => <TextField {...params} label="Movie" />
-        }
+            renderInput={(params) => <TextField {...params} label={label} />}
+            onChange={onChange}
         />
     );
 }
