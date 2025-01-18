@@ -20,8 +20,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function MapResults() {
-  const [open, setOpen] = React.useState(true);
+export default function MapResults({open, setOpen, data, setData}) {
 
   const handleClose = () => {
     setOpen(false);
@@ -31,7 +30,6 @@ export default function MapResults() {
       <Dialog
         fullScreen
         open={open}
-        onClose={handleClose}
         TransitionComponent={Transition}
       >
         <AppBar sx={{ position: 'sticky' }}>
