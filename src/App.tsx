@@ -49,10 +49,10 @@ function App() {
       padding={2}
       paddingTop={8}
     >
-      <Grid>
-        <Card>
-          <Grid container size={12} maxWidth="1000px" sx={{justifyContent:'center'}} padding={2}>
-            <Grid container spacing={2}>
+      <Grid sx={{paddingTop: '20vh'}}>
+        <Card sx={{borderRadius: 10, bgcolor: 'rgba(255, 255, 255, 0.8)'}}>
+          <Grid container size={12} maxWidth="700px" sx={{justifyContent:'center'}} padding={5}>
+            <Grid container spacing={2} paddingBlock={2}>
               <Typography variant="h1">Dri-Feet</Typography>
               <Box>
                 <img src={icon} width="100rem" height="100rem" style={{borderRadius: '1.5rem'}}/>
@@ -60,38 +60,38 @@ function App() {
             </Grid>
             <Grid size={12}>
               <Box component="form" onSubmit={onFormSubmit}>
-                <Grid size={12} container columnSpacing={2}>
-                  <Grid size={6}>
+                <Grid size={12} container columnSpacing={2} rowSpacing={2}>
+                  <Grid size={12}>
                     <MyAutocomplete 
                       label="Start location"
                       options={locations}
                       onChange={(_,v) => setStartLocation(v)}
                     />
                   </Grid>
-                  <Grid size={6}>
+                  <Grid size={12}>
                     <MyAutocomplete 
                       label="End location"
                       options={locations}
                       onChange={(_,v) => setEndLocation(v)}
                     />
                   </Grid>
-                  <Grid size={6}>
+                  <Grid size={5}>
                     <MyCheckbox
-                      label="accessible?"
+                      label="Require accessible paths?"
                       isChecked={isAccessible}
                       onChange={() => setIsAccessible(!isAccessible)}
                     />
                   </Grid>
-                  <Grid size={6}>
+                  <Grid size={5}>
                     <MyCheckbox
-                      label="sheltered?"
+                      label="Require sheltered paths?"
                       isChecked={isSheltered}
                       onChange={() => setIsSheltered(!isSheltered)}
                     />
                   </Grid>
-                  <Grid size={12} container sx={{justifyContent: 'center'}}>
+                  <Grid size={2} container sx={{justifyContent: 'center'}}>
                     <Grid size={12} container sx={{justifyContent: 'center'}}>
-                      <Button type="submit" variant="contained" color="primary" disabled={!submitReady}>
+                      <Button type="submit" variant="contained" color="primary" disabled={!submitReady} fullWidth sx={{borderRadius: 10}}>
                         Submit
                       </Button>
                     </Grid>

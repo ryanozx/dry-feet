@@ -8,6 +8,7 @@ const MyAutocomplete = ({label, options, onChange}) => {
             options={options}
             renderInput={(params) => <TextField {...params} label={label} />}
             onChange={onChange}
+            sx={{'& fieldset': { borderRadius: 10 }}}
         />
     );
 }
