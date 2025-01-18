@@ -5,17 +5,17 @@ import './App.css';
 import { Grid2 as Grid } from '@mui/material';
 import Header from './Header';
 import Home from './Home';
-import Map from './Map';
+import MapBox from './MapBox/MapBox';
 
 function App() {
-  const [isHome, setIsHome] = useState(true);
+  const [isHome, setIsHome] = useState(false);
   return (
     <Grid container>
       <Header onClick = {() => setIsHome(true)} />
       {
         isHome ?
         <Home /> :
-        <Map />
+        <MapBox />
       }
     </Grid>
 
