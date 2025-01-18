@@ -58,6 +58,7 @@ export default function MapResults({open, setOpen, data, setData}) {
               sx={{
                 height: { xs: '60%', md: '100%' }, // Adjust height for mobile and desktop
                 backgroundColor: 'lightblue',
+                overflow: 'hidden'
               }}
             >
               <MapContainer points={data?.points}/>
