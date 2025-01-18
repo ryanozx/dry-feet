@@ -14,7 +14,7 @@ function App() {
   const [locations, setLocations] = useState([]);
   const [startLocation, setStartLocation] = useState("");
   const [endLocation, setEndLocation] = useState("");
-  const [data, setData] = useState({path: []});
+  const [data, setData] = useState({path: [], pathAvailable: false});
 
   useEffect(() => {
     (async () => {

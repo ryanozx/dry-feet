@@ -14,7 +14,7 @@ const getLocations = async () => {
 }
 
 const queryPath = async (start, end, isSheltered, isAccessible) => {
-    return {path: fakePath};
+    return {path: fakePath, pathAvailable: true};
 
     const url = new URL('localhost:5000/api/find_path');
     url.searchParams.append('from', start);
