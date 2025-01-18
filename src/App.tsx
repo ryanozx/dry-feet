@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Box, Grid2 as Grid, Typography, Button, Card } from '@mui/material';
 import MyAutocomplete from './MyAutocomplete';
 import MyCheckbox from './MyCheckbox';
-import { getLocations, queryPath } from './api';
+import { getLocations, queryPath } from './api/api';
 import backgroundImage from './images/backgroundImage.jpg';
+<<<<<<< HEAD
 import icon from './images/icon.jpg';
+=======
+import MapResults from './MapResults/MapResults';
+>>>>>>> main
 
 function App() {
   const [isSheltered, setIsSheltered] = useState(false);
@@ -15,6 +18,7 @@ function App() {
   const [locations, setLocations] = useState([]);
   const [startLocation, setStartLocation] = useState("");
   const [endLocation, setEndLocation] = useState("");
+  const [data, setData] = useState({path: [], pathAvailable: false});
 
   useEffect(() => {
     (async () => {
@@ -25,7 +29,9 @@ function App() {
 
   const onFormSubmit= async (e) => {
     e.preventDefault();
-    const data = await queryPath(startLocation, endLocation, isSheltered, isAccessible);
+    const queryData = await queryPath(startLocation, endLocation, isSheltered, isAccessible);
+    setData(queryData);
+    setShowMap(true);
   }
 
   const submitReady = !!startLocation && !!endLocation;
@@ -96,6 +102,7 @@ function App() {
           </Grid>
         </Card>
       </Grid>
+      <MapResults open={showMap} setOpen={setShowMap} data={data} setData={setData}/>
     </Grid>
 
   );
