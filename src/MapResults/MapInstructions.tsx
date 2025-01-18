@@ -4,6 +4,7 @@ import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import Paper from '@mui/material/Paper';
 
 export default function MapInstructions({instructions}) {
+    console.log(instructions);
     const instructionsList = instructions.map((step, idx) =>
         <ListItemButton key={idx} sx={{ 
             alignItems: 'flex-start',
@@ -19,7 +20,7 @@ export default function MapInstructions({instructions}) {
             }}>
               {idx + 1}.
             </ListItemIcon>
-            <ListItemText primary={step} sx={{textAlign: 'justify'}}/>
+            <ListItemText primary={step.description} sx={{textAlign: 'justify'}}/>
         </ListItemButton>
     )
 

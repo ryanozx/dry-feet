@@ -70,12 +70,12 @@ export default function MapResults({open, setOpen, data, setData}) {
               md={4} // One third on desktop
               sx={{
                 height: { xs: '40%', md: '100%' }, // Adjust height for mobile and desktop
-                backgroundColor: 'lightgreen',
+                backgroundColor: 'white',
                 overflow: 'auto',
               }}
             >
-              {data.pathAvailable ?
-              <MapInstructions instructions={data.path}/> 
+              {data.possible ?
+              <MapInstructions instructions={data.route}/> 
             : <NoRouteError />}
               
             </Grid>

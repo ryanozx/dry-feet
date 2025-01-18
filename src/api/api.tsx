@@ -19,8 +19,12 @@ const queryPath = async (start, end, isSheltered, isAccessible) => {
     const url = new URL('http://localhost:5000/api/find_path');
     url.searchParams.append('from', start);
     url.searchParams.append('to', end);
-    url.searchParams.append('isSheltered', isSheltered);
-    url.searchParams.append('isAccessible', isAccessible);
+    if (isSheltered) {
+        url.searchParams.append('sheltered', isSheltered);
+    }
+    if (isAccessible) {
+        url.searchParams.append('accessible', isAccessible);
+    }
     const res = await fetch(url);
     const data = await res.json();
     return data;

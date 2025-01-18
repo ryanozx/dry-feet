@@ -4,7 +4,7 @@ import { Box, Grid2 as Grid, Typography, Button, Card, TextField } from '@mui/ma
 import MyAutocomplete from './MyAutocomplete';
 import MyCheckbox from './MyCheckbox';
 import { getLocations, queryPath } from './api/api';
-import backgroundImage from './images/backgroundImage.jpg';
+import backgroundImage from './images/backgroundImage.png';
 import icon from './images/icon.jpg';
 import MapResults from './MapResults/MapResults';
 
