@@ -6,17 +6,17 @@ const fakePath = [
     ]
 
 const getLocations = async () => {
-    return fakeLocations;
+//    return fakeLocations;
 
-    const res = await fetch('localhost:5000/api/locations');
+    const res = await fetch('http://localhost:5000/api/locations');
     const data = await res.json();
     return data;
 }
 
 const queryPath = async (start, end, isSheltered, isAccessible) => {
-    return {path: fakePath, pathAvailable: true};
+//    return {path: fakePath, pathAvailable: true};
 
-    const url = new URL('localhost:5000/api/find_path');
+    const url = new URL('http://localhost:5000/api/find_path');
     url.searchParams.append('from', start);
     url.searchParams.append('to', end);
     url.searchParams.append('isSheltered', isSheltered);

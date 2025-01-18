@@ -22,7 +22,7 @@ function App() {
       const data = await getLocations();
       setLocations(data);
     })();
-  })
+  }, []);
 
   const onFormSubmit= async (e) => {
     e.preventDefault();
